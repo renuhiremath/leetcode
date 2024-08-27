@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/add-two-numbers/description/
+// https://leetcode.com/problems/add-two-numbers/
 
 class Solution {
 public:
@@ -13,14 +13,15 @@ public:
         {
             sum = l1->val + l2->val + carryover;
             carryover = sum / 10;
+            sum = sum % 10;
             if (ans == nullptr)
             {
-                ans = new ListNode(sum % 10);
+                ans = new ListNode(sum);
                 temp = ans;
             }
             else
             {
-                temp->next = new ListNode(sum % 10);  
+                temp->next = new ListNode(sum);  
                 temp = temp->next;
             }
             l1 = l1->next;
@@ -31,7 +32,8 @@ public:
         {
             sum = l1->val + carryover;
             carryover = sum / 10;
-            temp->next = new ListNode(sum % 10);  
+            sum = sum % 10;
+            temp->next = new ListNode(sum);  
             temp = temp->next;
             l1 = l1->next;
         }
@@ -40,7 +42,8 @@ public:
         {
             sum = l2->val + carryover;
             carryover = sum / 10;
-            temp->next = new ListNode(sum % 10);  
+            sum = sum % 10;
+            temp->next = new ListNode(sum);  
             temp = temp->next;
             l2 = l2->next;
         }
